@@ -1,0 +1,11 @@
+.DS_Store
+vendor
+*.xmind
+config.dev.php
+route.cache
+cache/proxies/*.php
+cache
+public/index.php
+config.test.php
+src/Application.php
+docs/UnitTestCover

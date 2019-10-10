@@ -1,0 +1,42 @@
+nginx: 
+  image: "registry.cn-hangzhou.aliyuncs.com/nginx-phpfpm/nginx-front"
+  ports:
+    - "8082:80"
+  links:
+    - "phpfpm"
+  volumes:
+    - ./:/var/www/html/
+  container_name: frontend-sample-nginx
+
+phpfpm:
+  image: "registry.cn-hangzhou.aliyuncs.com/phpfpm/phpfpm-front"
+  volumes:
+    - ./:/var/www/html/
+  links:
+    - "memcached-session-1"
+    - "memcached-session-2"
+    - "memcached-data-1"
+    - "memcached-data-2"
+  external_links:
+    - "backend-sample-nginx"
+  environment:
+    - APP_ENV=dev
+  cap_add:
+    - SYS_PTRACE
+  container_name: frontend-sample-phpfpm
+
+memcached-session-1:
+  image: "registry.aliyuncs.com/marmot/memcached:1.0"
+  command: memcached -m 32
+
+memcached-session-2:
+  image: "registry.aliyuncs.com/marmot/memcached:1.0"
+  command: memcached -m 32
+
+memcached-data-1:
+  image: "registry.aliyuncs.com/marmot/memcached:1.0"
+  command: memcached -m 32
+
+memcached-data-2:
+  image: "registry.aliyuncs.com/marmot/memcached:1.0"
+  command: memcached -m 32

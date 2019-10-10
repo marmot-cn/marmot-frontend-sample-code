@@ -1,0 +1,17 @@
+{
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "chloroplast/monkey-framework": "dev-dev",
+        "chloroplast/marmot-sdk-sample-code": "dev-dev"
+    },
+    "require-dev": {
+        "chloroplast/marmot-dev-pacakges": "dev-master"
+    },
+    "repositories": {
+        "packagist": {
+            "type": "composer",
+            "url": "https://mirrors.aliyun.com/composer/"
+        }
+    }
+}
