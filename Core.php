@@ -50,13 +50,8 @@ class Core extends MarmotCore
      */
     public function initTest()
     {
-        $this->initAutoload();//autoload
-        $this->initApplication();
+        $this->initCli();
         $this->initTestEnv();//初始化测试环境
-        $this->initContainer();//引入容器
-        $this->initEnv();//初始化环境
-        $this->initCache();//初始化缓存使用
-        $this->initError();
     }
     
     protected function initApplication() : void
